@@ -8,7 +8,7 @@ from django.views.generic import (
     DeleteView
 )
 from django.http import HttpResponse
-# from .models import Project
+from .models import Project
 projects = [{
      'title': '',
      'url': '',
@@ -20,5 +20,8 @@ projects = [{
 
 # Create your views here.
 def index(request):
+     context = {
+        'projects': Project.objects.all(),
+    }
      # return HttpResponse('<h1>INDEX ROUTE WORKS</h1>')
-     return render(request, 'myawards/home.html')
+     return render(request, 'myawards/home.html', context)

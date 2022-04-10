@@ -8,6 +8,17 @@ from django.urls import reverse
 
 
 # Create your models here.
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = CloudinaryField('profile/' )
+    bio = models.TextField(max_length=300, null=True, default="My Bio", blank=True)
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+    def save(self, *args, **kwargs):
+        super(Profile, self).save( *args, **kwargs)
+
 class Project(models.Model):
     title = models.CharField(max_length=100)
     url = models.URLField(max_length=255)
@@ -15,7 +26,7 @@ class Project(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     developer = models.ForeignKey(User, on_delete=models.CASCADE)
     technologies = models.CharField(max_length=200, blank=True)
-    snapshot = models.ImageField(default='default.jpg', upload_to='snapshots_images')
+    snapshot = CloudinaryField('snapshots_images')
 
     def __str__(self):
         return self.title

@@ -1,5 +1,13 @@
 <!-- @format -->
 {% extends "myawards/base.html" %} {% block content %}
-<h1> RENDER WHEN I TELL YOU RENDER!!! </h1>
-
+<div class="container">
+	{% for project in projects %}
+	<div class="col-md-6 mx-auto my-3">
+		<h1 class="text-center">{{project.title}}</h1>
+		<img src="{{project.snapshot.url}}" alt="" class="img-fluid" />
+		<p class="text-muted">{{project.description}}</p>
+		<p class="lead">{{project.developer}}</p>
+	</div>
+	{% endfor %}
+</div>
 {% endblock content %}

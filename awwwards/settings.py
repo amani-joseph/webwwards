@@ -12,6 +12,22 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 import os
 from pathlib import Path
+import django_heroku
+import dj_database_url
+from decouple import config,Csv
+from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+# adding config
+cloudinary.config(
+    cloud_name=config('CLOUDINARY_CLOUD_NAME'),
+    api_key=config('CLOUDINARY_API_KEY'),
+    api_secret=config('CLOUDINARY_API_SECRET'),
+    secure=True
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myawards',
     'crispy_forms',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
