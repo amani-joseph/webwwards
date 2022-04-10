@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 from django.forms import ImageField
 from django.utils import timezone
@@ -14,7 +15,7 @@ class Project(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     developer = models.ForeignKey(User, on_delete=models.CASCADE)
     technologies = models.CharField(max_length=200, blank=True)
-    snapshot = ImageField(manual_crop='1280x720')
+    snapshot = ImageField()
 
     def __str__(self):
         return self.title
