@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse
 from django.views.generic import (
     ListView,
     DetailView,
@@ -25,3 +26,17 @@ def index(request):
     }
      # return HttpResponse('<h1>INDEX ROUTE WORKS</h1>')
      return render(request, 'myawards/home.html', context)
+
+
+class ProjectCreateView(CreateView):
+    model = Project
+    template_name = 'myawards/project_form.html'
+    fields = ['title', 'snapshot', 'description', 'url']
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.save()
+        return super(PostCreateView, self).form_valid(form)
+    
+    def get_success_url(self):
+        return reverse('index')

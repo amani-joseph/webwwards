@@ -1,0 +1,17 @@
+{% extends "myawards/base.html" %} {% load crispy_forms_tags %} {% block content %}
+<div class="container col-md-3 col-lg-4">
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<fieldset class="form-group">
+			<legend class="mb-4">Add Project</legend>
+			{{ form|crispy }}
+		</fieldset>
+
+		<!-- {{form.as_p}} -->
+		<div class="form-group mx-auto my-3 d-flex justify-content-center">
+			<button class="btn btn-outline-primary mx-auto" type="submit">Post</button>
+		</div>
+	</form>
+</div>
+
+{% endblock content %}
