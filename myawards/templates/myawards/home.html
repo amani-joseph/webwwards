@@ -1,12 +1,26 @@
 <!-- @format -->
 {% extends "myawards/base.html" %} {% block content %}
-<div class="container">
+<div class="container-fluid d-flex flex-row flex-wrap justify-content-center">
 	{% for project in projects %}
-	<div class="col-md-6 mx-auto my-3">
-		<h1 class="text-center">{{project.title}}</h1>
-		<img src="{{project.snapshot.url}}" alt="" class="img-fluid" />
-		<p class="text-muted">{{project.description}}</p>
-		<p class="lead">{{project.developer}}</p>
+	<div class="mx-3 my-3 shadow" style="width: 20em">
+		<h5 class="text-center">{{project.title | capfirst}}</h5>
+		<a class="my-2" href="{{project.url}}">
+			<img src="{{project.snapshot.url}}" alt="" class="img-fluid" />
+		</a>
+		<br />
+		<div class="container d-flex justify-content-center p-2">
+			<a class="my-3 mx-auto text-center text-light" href="{{project.url}}">
+				<button class="text-muted btn btn-info">Visit site</button>
+			</a>
+		</div>
+
+		<div class="text-muted my-2 p-2">{{project.description}}</div>
+		<div class="text-muted text-center fw-light bg-info m-3 p-1 rounded-3"
+			>{{project.technologies}}</div
+		>
+		<div class="lead text-dark text-center fw-light bg-light m-3 p-1 rounded-3"
+			>Developed by: {{project.developer}}</div
+		>
 	</div>
 	{% endfor %}
 </div>

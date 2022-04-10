@@ -31,12 +31,12 @@ def index(request):
 class ProjectCreateView(CreateView):
     model = Project
     template_name = 'myawards/project_form.html'
-    fields = ['title', 'snapshot', 'description', 'url']
+    fields = ['title', 'url', 'technologies','snapshot', 'description' ]
     
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.save()
-        return super(PostCreateView, self).form_valid(form)
+        return super(ProjectCreateView, self).form_valid(form)
     
     def get_success_url(self):
         return reverse('index')

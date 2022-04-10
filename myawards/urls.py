@@ -7,5 +7,5 @@ from .views import (
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('post/new/', ProjectCreateView.as_view(), name='post_create'),
+    path('post/new/', ProjectCreateView.as_view(), name='project_create'),
 ]

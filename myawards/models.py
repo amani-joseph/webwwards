@@ -43,4 +43,4 @@ class Project(models.Model):
         return cls.objects.all()   
 
     def get_absolute_url(self):
-        return reverse('post-detail', kwargs={'pk': self.pk})
+        return reverse('index', kwargs={'pk': self.pk})
