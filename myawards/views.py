@@ -9,7 +9,14 @@ from django.views.generic import (
 )
 from django.http import HttpResponse
 # from .models import Project
-
+projects = [{
+     'title': '',
+     'url': '',
+     'description': '',
+     'technologies': '',
+     'snapshot': '',
+     'developer': '',
+}]
 
 # Create your views here.
 def index(request):

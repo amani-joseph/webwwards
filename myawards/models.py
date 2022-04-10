@@ -15,7 +15,7 @@ class Project(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     developer = models.ForeignKey(User, on_delete=models.CASCADE)
     technologies = models.CharField(max_length=200, blank=True)
-    snapshot = ImageField()
+    snapshot = models.ImageField(default='default.jpg', upload_to='snapshots_images')
 
     def __str__(self):
         return self.title
