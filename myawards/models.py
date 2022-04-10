@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ImageField
 from django.utils import timezone
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
@@ -17,6 +18,17 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+   
+    def delete_post(self):
+        self.delete()
+        
+    @classmethod
+    def search_project(cls, title):
+        return cls.objects.filter(title__icontains=title).all()
+   
+    @classmethod
+    def all_posts(cls):
+        return cls.objects.all()   
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
