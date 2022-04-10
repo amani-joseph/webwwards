@@ -1,23 +1,58 @@
 <!-- @format -->
 {% extends "myawards/base.html" %} {% block content %}
+<header>
+	<div class="container col-xxl-8 px-4 py-5">
+		<div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+			<div class="col-10 col-sm-8 col-lg-6">
+				<img
+					src="https://images.pexels.com/photos/160107/pexels-photo-160107.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+					class="d-block mx-lg-auto img-fluid"
+					alt="Bootstrap Themes"
+					loading="lazy"
+					width="700"
+					height="500"
+				/>
+			</div>
+			<div class="col-lg-6">
+				<h1 class="display-5 fw-bold lh-1 mb-3"
+					>Responsive left-aligned hero with image</h1
+				>
+				<p class="lead"
+					>Quickly design and customize responsive mobile-first sites with
+					Bootstrap, the world’s most popular front-end open source toolkit,
+					featuring Sass variables and mixins, responsive grid system, extensive
+					prebuilt components, and powerful JavaScript plugins.</p
+				>
+				<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+					<button type="button" class="btn btn-primary btn-lg px-4 me-md-2"
+						>Primary</button
+					>
+					<button type="button" class="btn btn-outline-secondary btn-lg px-4"
+						>Default</button
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 <div class="container-fluid d-flex flex-row flex-wrap justify-content-center">
 	{% for project in projects %}
 	<div class="mx-3 my-3 shadow" style="width: 20em">
-		<h5 class="text-center">{{project.title | capfirst}}</h5>
-		<a class="my-2" href="{{project.url}}">
+		<h6 class="text-center">{{project.title | capfirst}}</h6>
+		<a class="my-2" href="#">
 			<img src="{{project.snapshot.url}}" alt="" class="img-fluid" />
 		</a>
 		<br />
 		<div class="container d-flex justify-content-center p-2">
 			<a class="my-3 mx-auto text-center text-light" href="{{project.url}}">
-				<button class="text-muted btn btn-info">Visit site</button>
+				<button class="text-muted btn btn-info">More details</button>
 			</a>
 		</div>
 
-		<div class="text-muted my-2 p-2">{{project.description}}</div>
-		<div class="text-muted text-center fw-light bg-info m-3 p-1 rounded-3"
+		<!-- <div class="text-muted my-2 p-2">{{project.description}}</div> -->
+		<!-- <div class="text-muted text-center fw-light bg-info m-3 p-1 rounded-3"
 			>{{project.technologies}}</div
-		>
+		> -->
 		<div class="lead text-dark text-center fw-light bg-light m-3 p-1 rounded-3"
 			>Developed by: {{project.developer}}</div
 		>

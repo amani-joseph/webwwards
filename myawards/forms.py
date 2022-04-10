@@ -12,12 +12,12 @@ class UserRegisterForm(UserCreationForm):
         fields = [ 'email', 'username','password1', 'password2']
 
 
-class PostForm(forms.ModelForm):
-    photo = CloField(label='')
-
+class UploadForm(forms.ModelForm):
+    
     class Meta:
         model = Project
-        fields = ('photo', 'title', 'url', 'description', 'technologies',)
+        fields = ('snapshot', 'title', 'url', 'description', 'technologies',)
+        exclude = ["date_posted", "developer"]
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
