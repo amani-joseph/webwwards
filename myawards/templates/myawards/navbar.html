@@ -70,16 +70,14 @@
 								>Submit a Project</button
 							>
 						</a>
-						<ul
-							class="dropdown-menu dropdown-menu-md-end"
-							aria-labelledby="navbarDropdown">
-							<li class="dropdown-item">
-								Profile
-							</li>
-						</ul>
+						<a href="{% url 'profile'%}">
+							<button type="button" class="btn btn-outline-light">Profile</button>
+						</a>
+						
 						<a href="{% url 'logout'%}">
 							<button type="button" class="btn btn-warning">Logout</button>
 						</a>
+
 						
 						
 						{% else %}

@@ -14,15 +14,8 @@ from django.views.generic import (
     DeleteView
 )
 from django.http import HttpResponse
-from .models import Project
-projects = [{
-     'title': '',
-     'url': '',
-     'description': '',
-     'technologies': '',
-     'snapshot': '',
-     'developer': '',
-}]
+from .models import Profile, Project
+
 
 # Create your views here.
 def register(request):
@@ -40,9 +33,11 @@ def register(request):
 
 @login_required
 def profile(request):
-    # context = {
-    #     'projects': Project.objects.filter(developer=request.user).all()
-    # }
+    user = request.user
+    context = {
+        'projects': Project.objects.filter(developer=request.user).all(),
+        'user': user,
+    }
     return render(request, 'myawards/auth/profile.html')
 
 @login_required
@@ -109,3 +104,14 @@ class ProjectDetailView(DetailView):
     
     
     
+# class AuthorDetailView(DetailView):
+#     model = Profile
+#     template_name = 'myawards/auth/not_user_profile.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+
+#         posts = Post.objects.all()
+
+#         context["posts"] = posts
+#         return context

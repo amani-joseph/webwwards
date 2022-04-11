@@ -1,6 +1,6 @@
 {% extends "myawards/base.html" %} {% block content %}
 <div class="content-section">
-	<div class="container mx-auto d-flex flex-row flex-wrap">
+	<div class="container mx-auto ">
 		<div class="container  mx-auto d-flex justify-content-center my-3">
 			
 			
@@ -10,9 +10,10 @@
 				class="rounded-circle mx-auto"
 				src="http://www.gravatar.com/avatar/?d=mp"
 			/>
-
-			
-          </div>
+           </div>
+           <div class="text-center py-2 fw-bold">{{user.username}}</div>
+           <div class="text-center py-2 fw-bold">{{user.email}}</div>
+           <div class="text-center py-2 mx-auto fw-bold btn btn-outline-secondary">Edit Profile</div>
 </div>
 
 {% endblock content %}
