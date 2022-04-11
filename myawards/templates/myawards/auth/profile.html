@@ -4,16 +4,30 @@
 		<div class="container  mx-auto d-flex justify-content-center my-3">
 			
 			
+			{% if user.profile.image %}
+			<img
+				width="150"
+				height="150"
+				class="rounded-circle mx-auto"
+				src="{{ user.profile.image.url }}"
+			/>
+
+			{% else %}
 			<img
 				width="150"
 				height="150"
 				class="rounded-circle mx-auto"
 				src="http://www.gravatar.com/avatar/?d=mp"
 			/>
+
+			{% endif %}
            </div>
            <div class="text-center py-2 fw-bold">{{user.username}}</div>
            <div class="text-center py-2 fw-bold">{{user.email}}</div>
-           <div class="text-center py-2 mx-auto fw-bold btn btn-outline-secondary">Edit Profile</div>
+           <a href="{% url 'edit_profile'%}">
+               <div class="text-center py-2 mx-auto fw-bold btn btn-outline-secondary">Edit Profile</div>
+           </a>
+           
 </div>
 
 {% endblock content %}
