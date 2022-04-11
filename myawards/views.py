@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.urls import reverse
+from django.core.paginator import Paginator
 from django.views.generic import (
     ListView,
     DetailView,
@@ -34,15 +35,15 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, "myawards/auth/register.html", {'form': form})
+    return render(request, "myawards/auth/signup.html", {'form': form})
 
 
 @login_required
 def profile(request):
-    context = {
-        'posts': Project.objects.filter(user=request.user).all()
-    }
-    return render(request, 'myawards/auth/profile.html',context )
+    # context = {
+    #     'projects': Project.objects.filter(developer=request.user).all()
+    # }
+    return render(request, 'myawards/auth/profile.html')
 
 @login_required
 def editProfile(request):
@@ -67,25 +68,44 @@ def editProfile(request):
     }
     return render(request, 'myawards/auth/edit_profile.html', context)
 
+# class ProjectListView(ListView):
+#     model = Project
+#     template_name = 'myawards/home.html'
+#     context_object_name = 'projects'
+#     ordering = ['-date_posted']
+#     paginate_by = 5
+
+
 def index(request):
-     context = {
+    projects = Project.objects.all()
+    paginator = Paginator(projects, 4) # Show 25 contacts per page.
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
         'projects': Project.objects.all(),
+        'paginator': paginator,
+        'page_number' : page_number,
+        'page_obj' : page_obj,
     }
-     # return HttpResponse('<h1>INDEX ROUTE WORKS</h1>')
-     return render(request, 'myawards/home.html', context)
+    # return HttpResponse('<h1>INDEX ROUTE WORKS</h1>')
+    return render(request, 'myawards/home.html', context)
 
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     template_name = 'myawards/project_form.html'
     fields = ['title', 'url', 'technologies','snapshot', 'description' ]
     
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.developer = self.request.user
         form.save()
         return super(ProjectCreateView, self).form_valid(form)
     
     def get_success_url(self):
         return reverse('index')
    
-   
+class ProjectDetailView(DetailView):
+    model = Project
+    
+    
+    

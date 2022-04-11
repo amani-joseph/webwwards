@@ -47,11 +47,11 @@
 					<ul
 						class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
 					>
-						<li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-						<li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+						<li><a href="{% url 'index'%}" class="nav-link px-2 text-warning fw-bolder h2">Webwwards</a></li>
+						<!-- <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
 						<li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
 						<li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-						<li><a href="#" class="nav-link px-2 text-white">About</a></li>
+						<li><a href="#" class="nav-link px-2 text-white">About</a></li> -->
 					</ul>
 
 					<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
@@ -70,12 +70,28 @@
 								>Submit a Project</button
 							>
 						</a>
-						<button type="button" class="btn btn-warning">Logout</button>
+						<ul
+							class="dropdown-menu dropdown-menu-md-end"
+							aria-labelledby="navbarDropdown">
+							<li class="dropdown-item">
+								Profile
+							</li>
+						</ul>
+						<a href="{% url 'logout'%}">
+							<button type="button" class="btn btn-warning">Logout</button>
+						</a>
+						
+						
 						{% else %}
-						<button type="button" class="btn btn-outline-light me-2"
+						<a href="{% url 'login'%}">
+							<button type="button" class="btn btn-outline-light me-2"
 							>Login</button
 						>
-						<button type="button" class="btn btn-warning">Sign-up</button>
+						</a>
+						<a href="{% url 'register'%}">
+							<button type="button" class="btn btn-warning">Sign-up</button>
+						</a>
+						
 						{% endif %}
 					</div>
 				</div>

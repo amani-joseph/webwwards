@@ -15,31 +15,28 @@
 			</div>
 			<div class="col-lg-6">
 				<h1 class="display-5 fw-bold lh-1 mb-3"
-					>Responsive left-aligned hero with image</h1
+					>Wanna chill with the "Big-Devs"</h1
 				>
 				<p class="lead"
-					>Quickly design and customize responsive mobile-first sites with
-					Bootstrap, the world’s most popular front-end open source toolkit,
-					featuring Sass variables and mixins, responsive grid system, extensive
-					prebuilt components, and powerful JavaScript plugins.</p
+					>Get to share your projects and let your peers review your work. Cant be the best if you are not in it with the best. There are many developers, and designers at different levels of learning and your sharing of your projects will inspire someone else at the end of the day. </p
 				>
-				<div class="d-grid gap-2 d-md-flex justify-content-md-start">
+				<!-- <div class="d-grid gap-2 d-md-flex justify-content-md-start">
 					<button type="button" class="btn btn-primary btn-lg px-4 me-md-2"
 						>Primary</button
 					>
 					<button type="button" class="btn btn-outline-secondary btn-lg px-4"
 						>Default</button
 					>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
 </header>
 <div class="container-fluid d-flex flex-row flex-wrap justify-content-center">
 	{% for project in projects %}
-	<div class="mx-3 my-3 shadow" style="width: 20em">
+	<div class="mx-3 my-3 shadow" style="width: 25em">
 		<h6 class="text-center">{{project.title | capfirst}}</h6>
-		<a class="my-2" href="#">
+		<a class="my-2" href="{% url 'post-detail' project.id %}">
 			<img src="{{project.snapshot.url}}" alt="" class="img-fluid" />
 		</a>
 		<br />
