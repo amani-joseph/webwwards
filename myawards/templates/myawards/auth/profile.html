@@ -24,12 +24,12 @@
            </div>
            <div class="text-center py-2 fw-bold">{{user.username}}</div>
            <div class="text-center py-2 fw-bold">{{user.email}}</div>
-           <a href="{% url 'edit_profile'%}">
+           <!-- <a href="{% url 'edit_profile'%}">
                <div class="text-center py-2 mx-auto fw-bold btn btn-outline-secondary">Edit Profile</div>
-           </a>
+           </a> -->
            
      </div>
-     <div class="container y-3 d-flex flex-row flex-wrap">
+     <div class="container y-3 d-flex flex-row flex-wrap justify-content-center">
           {% for project in projects %}
                <div class="mx-3 my-3 shadow" style="width: 25em">
                     <h6 class="text-center">{{project.title | capfirst}}</h6>

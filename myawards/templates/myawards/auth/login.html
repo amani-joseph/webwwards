@@ -3,8 +3,8 @@
 {% extends "myawards/base.html" %}{% load crispy_forms_tags %} {% block content%}
 <div class="container col-md-5 col-lg-4 d-flex flex-column align-items-center">
 	<div class="container-fluid d-flex flex-column align-items-center my-5">
-		<div class="btn btn-primary"
-			><span><i class="bi bi-facebook"></i></span> Login</div
+		<div class="btn btn-warning"
+			> Login</div
 		>
 		<form method="POST" class="d-flex flex-column align-items-center">
 			{% csrf_token %}
@@ -13,7 +13,7 @@
 				{{ form | crispy}}
 			</fieldset>
 			<div class="form-group mx-auto my-3">
-				<button class="btn btn-lg btn-block btn-primary" type="submit"
+				<button class="btn btn-lg btn-block btn-warning" type="submit"
 					>Log In</button
 				>
 			</div>

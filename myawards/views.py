@@ -18,6 +18,32 @@ from .models import Profile, Project
 
 
 # Create your views here.
+
+
+class ProjectListView(ListView):
+    model = Project
+    template_name = 'myawards/home.html'  
+    context_object_name = 'projects'
+    ordering = ['-date_posted']
+    paginate_by = 8
+    
+
+
+# def index(request):
+#     projects = Project.objects.all()
+#     paginator = Paginator(projects, 4) # Show 25 contacts per page.
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+#     context = {
+#         'projects': Project.objects.all(),
+#         'paginator': paginator,
+#         'page_number' : page_number,
+#         'page_obj' : page_obj,
+#     }
+#     # return HttpResponse('<h1>INDEX ROUTE WORKS</h1>')
+#     return render(request, 'myawards/home.html', context)
+
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -65,27 +91,8 @@ def editProfile(request):
     }
     return render(request, 'myawards/auth/edit_profile.html', context)
 
-# class ProjectListView(ListView):
-#     model = Project
-#     template_name = 'myawards/home.html'
-#     context_object_name = 'projects'
-#     ordering = ['-date_posted']
-#     paginate_by = 5
 
 
-def index(request):
-    projects = Project.objects.all()
-    paginator = Paginator(projects, 4) # Show 25 contacts per page.
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    context = {
-        'projects': Project.objects.all(),
-        'paginator': paginator,
-        'page_number' : page_number,
-        'page_obj' : page_obj,
-    }
-    # return HttpResponse('<h1>INDEX ROUTE WORKS</h1>')
-    return render(request, 'myawards/home.html', context)
 
 
 class ProjectCreateView(LoginRequiredMixin, CreateView):

@@ -3,12 +3,14 @@ from . import views
 from django.contrib.auth import views as auth_views
 from .views import (
     ProjectCreateView,
-    ProjectDetailView
+    ProjectDetailView,
+    ProjectListView
 )
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    # path('', views.index, name='index'),
+    path('', ProjectListView.as_view(), name='index'),
     path('project/new/', ProjectCreateView.as_view(), name='project_create'),
     path('project/<int:pk>/', ProjectDetailView.as_view(), name='post-detail'),
     path('register/', views.register, name='register'),
