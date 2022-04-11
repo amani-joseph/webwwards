@@ -28,6 +28,30 @@
                <div class="text-center py-2 mx-auto fw-bold btn btn-outline-secondary">Edit Profile</div>
            </a>
            
+     </div>
+     <div class="container y-3 d-flex flex-row flex-wrap">
+          {% for project in projects %}
+               <div class="mx-3 my-3 shadow" style="width: 25em">
+                    <h6 class="text-center">{{project.title | capfirst}}</h6>
+                    <a class="my-2" href="">
+                         <img src="{{project.snapshot.url}}" alt="" class="img-fluid" />
+                    </a>
+                    <br />
+                    <div class="container d-flex justify-content-center p-2">
+                         <a class="my-3 mx-auto text-center text-light" href="{{project.url}}">
+                              <button class="text-muted btn btn-info">More details</button>
+                         </a>
+                    </div>
+
+               
+                    <div class="lead text-dark text-center fw-light bg-light m-3 p-1 rounded-3"
+                         >Developed by: {{project.developer}}</div
+                    >
+               </div>
+          {% endfor %}
+</div>
+</div>
+     </div>
 </div>
 
 {% endblock content %}

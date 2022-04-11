@@ -34,14 +34,16 @@ def register(request):
 @login_required
 def profile(request):
     user = request.user
+    # projects = Project.objects.filter(developer=request.user).all(),
     context = {
-        'projects': Project.objects.filter(developer=request.user).all(),
         'user': user,
+        'projects': Project.objects.filter(developer=request.user).all()
     }
-    return render(request, 'myawards/auth/profile.html')
+    return render(request, 'myawards/auth/profile.html', context)
 
 @login_required
 def editProfile(request):
+    
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
