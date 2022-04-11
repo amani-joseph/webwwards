@@ -15,13 +15,10 @@ This is a django application for rating web apps. Users can browse submitted pro
 
 ## Screenshot
 
- <img src="https://github.com/amani-joseph/instagram/blob/main/Screenshots/Screen%20Shot%202022-04-06%20at%2011.36.17.png?raw=true" > 
- <img src="https://github.com/amani-joseph/instagram/blob/main/Screenshots/Screen%20Shot%202022-04-06%20at%2011.36.27.png?raw=true" > 
- <img src="https://github.com/amani-joseph/instagram/blob/main/Screenshots/Screen%20Shot%202022-04-06%20at%2011.36.43.png?raw=true" > 
- <img src="https://github.com/amani-joseph/instagram/blob/main/Screenshots/amani-instagram.herokuapp.com_profile_%20(1).png?raw=true" > 
-
- <img src="https://github.com/amani-joseph/instagram/blob/main/Screenshots/Screenshot_20220409-132413_Vivaldi%20Browser.jpg?raw=true" width='50%'> 
-
+ <img src="https://github.com/amani-joseph/webwwards/blob/master/screenshot/1.png?raw=true" > 
+ <img src="https://github.com/amani-joseph/webwwards/blob/master/screenshot/2.png?raw=true" > 
+ <img src="https://github.com/amani-joseph/webwwards/blob/master/screenshot/3.png?raw=true" > 
+ 
 ### Dependencies
 
 In order for you to use the content on this repo ensure you have the following:
