@@ -7,37 +7,42 @@ from django.contrib.auth.models import User
 
 # api_views here
 @api_view(['GET'])
-def GetProjects(request):
+def get_projects(request):
     projects = Project.objects.all()
-    serializer = ProjectSerializer(projects, many = True)
+    serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
 
+
 @api_view(['GET'])
-def GetUserDetails(request,pk):
+def get_user_details(request, pk):
     profile = User.objects.get(id=pk)
-    serializer = UserSerializer(profile, many = False)
+    serializer = UserSerializer(profile, many=False)
     return Response(serializer.data)
 
+
 @api_view(['GET'])
-def GetProfile(request,pk):
+def get_profile(request, pk):
     profile = Profile.objects.get(id=pk)
-    serializer = ProfileSerializer(profile, many = False)
+    serializer = ProfileSerializer(profile, many=False)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def GetSpecificProject(request,id):
-    article = Projects.objects.get(id=id)
-    serializer = ProjectSerializer(article, many = False)
-    return Response(serializer.data)
 
 @api_view(['GET'])
-def GetSpecificRating(request,pk):
+def get_specific_project(request, id):
+    article = Project.objects.get(id=id)
+    serializer = ProjectSerializer(article, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def get_specific_rating(request, pk):
     rating = Rating.objects.filter(project_id=pk)
-    serializer = RatingSerializer(rating, many = True)
+    serializer = RatingSerializer(rating, many=True)
     return Response(serializer.data)
 
+
 @api_view(['GET'])
-def GetUserProjects(request,pk):
-    projects = Projects.objects.filter(owner_id=pk)
-    serializer = ProjectSerializer(projects, many = True)
+def get_user_projects(request, pk):
+    projects = Project.objects.filter(owner_id=pk)
+    serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
