@@ -50,7 +50,6 @@ class Rating(models.Model):
     design = models.IntegerField(blank=True, null=True, default=0 )
     usability = models.IntegerField(blank=True, null=True, default=0)
     content = models.IntegerField(blank=True, null=True, default=0)
-    score = models.FloatField(default=0, blank=True)
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='ratings', null=True)
 
     def save_rating(self):

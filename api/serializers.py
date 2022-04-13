@@ -1,24 +1,27 @@
 from rest_framework import serializers
-from myawards.models import Profile, Project
+from myawards.models import Profile, Project, Rating
 from django.contrib.auth.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['name', 'image', 'bio']
+        fields = '__all__'
 
 
-class PostSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ['id', 'title', 'url', 'description', 'technologies', 'snapshot', 'date_posted', 'developer']
+        fields = '__all__'
 
 
-class UserSerializer(serializers.ModelSerializer):
-    profile = ProfileSerializer(read_only=True)
-    posts = PostSerializer(many=True, read_only=True)
-
+class RatingSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['id', 'url', 'username', 'profile', 'posts']
+        model = Rating
+        fields = '__all__'
