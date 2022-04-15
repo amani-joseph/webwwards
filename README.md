@@ -30,7 +30,7 @@ In order for you to use the content on this repo ensure you have the following:
 
 ```bash
 #clone the repo
-git clone https://github.com/amani-joseph/instagram.git
+git clone https://github.com/amani-joseph/webwwards.git
 # install virtual environment
 $ python3 -m venv venv
 #actictvate virtual environment
